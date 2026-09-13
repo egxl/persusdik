@@ -3,12 +3,12 @@ import { Search, X, BookOpen, HelpCircle, AlertTriangle } from "lucide-react";
 import { FAQ_ITEMS } from "../data/faqData";
 import { CHAPTERS_DIRECTORY } from "../data/rulesDirectory";
 import { VIOLATIONS_DATA } from "../data/disciplinaryData";
-import { ActiveTab } from "./ActionRibbon";
+import { PageId } from "../types/navigation";
 
 interface SearchDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  onNavigateTab: (tab: ActiveTab) => void;
+  onNavigateTab: (tab: PageId) => void;
 }
 
 export const SearchDialog: React.FC<SearchDialogProps> = ({

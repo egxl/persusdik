@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+ï»¿import React, { useState } from "react";
 import { CHAPTERS_DIRECTORY } from "../data/rulesDirectory";
 import { BookOpen, ChevronRight, ArrowUpRight } from "lucide-react";
 
@@ -15,7 +15,7 @@ export const MarkdownDocument: React.FC<MarkdownDocumentProps> = ({ onOpenPdf })
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      <aside className="lg:col-span-4 bg-white border border-parchment-300 rounded-xl p-5 shadow-sm sticky top-[135px]">
+      <aside className="lg:col-span-4 bg-white border border-parchment-300 rounded-xl p-5 shadow-sm sticky top-24">
         <div className="flex items-center space-x-2 border-b border-parchment-200 pb-3 mb-4">
           <BookOpen className="w-4 h-4 text-bronze-700" />
           <h3 className="font-cinzel text-xs font-bold text-ink-900 uppercase tracking-wider">
@@ -67,10 +67,10 @@ export const MarkdownDocument: React.FC<MarkdownDocumentProps> = ({ onOpenPdf })
             Naskah Resmi Perkhusserdik P3MD 2026
           </div>
           <h1 className="font-cinzel text-2xl sm:text-3xl font-bold text-ink-900 leading-tight">
-            {activeChapter.number} — {activeChapter.title}
+            {activeChapter.number} â€” {activeChapter.title}
           </h1>
           <p className="text-xs text-ink-600 font-serif italic mt-1">
-            Program Presiden untuk Pemimpin Masa Depan • Angkatan Soedirman (Serpong, TA 2026)
+            Program Presiden untuk Pemimpin Masa Depan â€¢ Angkatan Soedirman (Serpong, TA 2026)
           </p>
         </div>
 
@@ -113,7 +113,7 @@ export const MarkdownDocument: React.FC<MarkdownDocumentProps> = ({ onOpenPdf })
         </div>
 
         <div className="pt-6 border-t border-parchment-200 flex flex-col sm:flex-row items-center justify-between text-xs text-ink-600 gap-3 font-serif italic">
-          <div>Ditetapkan di Lemdik Kesatrian Serpong • Komandan: Marsma TNI Dr. Anton Pallaguna</div>
+          <div>Ditetapkan di Lemdik Kesatrian Serpong â€¢ Komandan: Marsma TNI Dr. Anton Pallaguna</div>
           <button
             onClick={onOpenPdf}
             className="text-bronze-800 underline font-semibold font-sans hover:text-ink-900"
@@ -125,3 +125,4 @@ export const MarkdownDocument: React.FC<MarkdownDocumentProps> = ({ onOpenPdf })
     </div>
   );
 };
+
