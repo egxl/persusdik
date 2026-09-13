@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arah A: Kesatrian Command — PERSUSDIK P3MD Batch 1 Soedirman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#060B18',
+              900: '#0A1128',
+              850: '#0F1A3A',
+              800: '#14224D',
+              700: '#1E326E',
+            },
+            brass: {
+              300: '#E6CF9B',
+              400: '#D8B872',
+              500: '#C5A059',
+              600: '#A3803E',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #060B18; color: #F8FAFC; }
+    .grid-lines {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(30, 50, 110, 0.18) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(30, 50, 110, 0.18) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="min-h-screen font-sans antialiased grid-lines selection:bg-brass-500 selection:text-navy-950">
+
+  <!-- Huashu Top Ribbon -->
+  <div class="bg-brass-500/10 border-b border-brass-500/30 text-brass-300 text-xs px-4 py-2 flex items-center justify-between font-mono">
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded-full bg-brass-400 animate-pulse"></span>
+      <span class="font-bold uppercase tracking-wider">Arah A · Kesatrian Command</span>
+      <span class="text-slate-400 hidden sm:inline">| Swiss Military Precision & Modern Editorial</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="text-slate-400 text-[11px] hidden md:inline">Palet: Midnight Navy + Brass Gold</span>
+      <a href="index.html" class="text-brass-400 hover:text-white underline font-semibold flex items-center space-x-1">
+        <span>← Bandingkan 3 Arah</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Primary Header -->
+  <header class="bg-navy-900/90 backdrop-blur-md border-b border-navy-700/70 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded border border-brass-500/50 bg-navy-850 flex items-center justify-center font-mono font-bold text-brass-400 text-sm tracking-tighter shadow-sm">
+          P3MD
+        </div>
+        <div>
+          <div class="text-[11px] tracking-widest text-brass-400 font-mono font-bold uppercase">Batch 1 / Soedirman</div>
+          <div class="text-sm font-bold text-white tracking-tight">Portal Peraturan Khusus Serdik (PERSUSDIK)</div>
+        </div>
+      </div>
+
+      <div class="hidden lg:flex items-center space-x-4 text-xs font-mono text-slate-300">
+        <div class="flex items-center space-x-2 bg-navy-850 px-3 py-1.5 rounded border border-navy-700">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>SERPONG, TA 2026</span>
+        </div>
+        <div class="flex items-center space-x-2 bg-navy-850 px-3 py-1.5 rounded border border-navy-700">
+          <span class="text-brass-400">WAKTU AKTIF:</span>
+          <span id="live-clock" class="text-white font-bold">09:45:00 WIB</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <a href="../PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf" download class="inline-flex items-center space-x-1.5 bg-navy-850 hover:bg-navy-800 text-slate-200 border border-navy-700 hover:border-brass-500/50 text-xs px-3 py-2 rounded font-medium transition">
+          <svg class="w-4 h-4 text-brass-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Unduh PDF (443 KB)</span>
+        </a>
+        <button onclick="togglePdfModal(true)" class="inline-flex items-center space-x-1.5 bg-brass-500 hover:bg-brass-400 text-navy-950 font-bold text-xs px-3.5 py-2 rounded transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          <span>Buka PDF Asli</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero & Command Center -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="border border-navy-700 bg-navy-900/80 rounded-lg p-6 lg:p-8 relative overflow-hidden">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-navy-800 pb-5 mb-6">
+        <div class="space-y-1.5">
+          <div class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 bg-brass-500/20 text-brass-400 text-[10px] font-mono font-bold tracking-wider uppercase rounded border border-brass-500/30">Pedoman Resmi Serdik</span>
+            <span class="text-slate-400 text-xs font-mono">Tahun Anggaran 2026</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            PROGRAM PRESIDEN UNTUK PEMIMPIN MASA DEPAN
+          </h1>
+          <p class="text-sm text-brass-400 font-medium">BATCH 1 / SOEDIRMAN • PERATURAN KHUSUS PESERTA DIDIK</p>
+        </div>
+        <div class="text-left sm:text-right bg-navy-950/80 p-3 rounded border border-navy-800">
+          <div class="text-[11px] font-mono text-slate-400">Komandan Batch 1 Soedirman:</div>
+          <div class="text-sm font-bold text-white">Marsma TNI Dr. Anton Pallaguna</div>
+          <div class="text-[10px] text-brass-400/90 font-mono">M.Han., M.M.O.A.S., CHRA., CSBA.</div>
+        </div>
+      </div>
+
+      <!-- Metrics Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3.5 mb-6">
+        <div class="bg-navy-950 p-3.5 rounded border border-navy-800">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Cakupan Regulasi</div>
+          <div class="text-xl font-black text-white mt-0.5">8 BAB</div>
+          <div class="text-[11px] text-slate-400">39 Pasal Lengkap</div>
+        </div>
+        <div class="bg-navy-950 p-3.5 rounded border border-navy-800">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Korps Serdik</div>
+          <div class="text-xl font-black text-brass-400 mt-0.5">44 Jabatan</div>
+          <div class="text-[11px] text-slate-400">Struktur Komando Siswa</div>
+        </div>
+        <div class="bg-navy-950 p-3.5 rounded border border-navy-800">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Disiplin Kesatrian</div>
+          <div class="text-xl font-black text-white mt-0.5">3 Klasifikasi</div>
+          <div class="text-[11px] text-slate-400">Ringan · Sedang · Berat</div>
+        </div>
+        <div class="bg-navy-950 p-3.5 rounded border border-navy-800">
+          <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Motto Juang</div>
+          <div class="text-xl font-black text-emerald-400 mt-0.5">Best Heart</div>
+          <div class="text-[11px] text-slate-400">Best Mind, National Integrity</div>
+        </div>
+      </div>
+
+      <!-- Quick Finder Input -->
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+          <svg class="w-4 h-4 text-brass-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <input type="text" placeholder="Cari pasal atau kata kunci (misal: 'rambut', 'vape', 'makan', 'kantin', 'pesiar', 'apel', 'gadget')..." class="w-full pl-10 pr-24 py-3 bg-navy-950 border border-navy-700 rounded text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brass-500 transition">
+        <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+          <span class="text-[10px] font-mono bg-navy-850 px-2 py-1 rounded text-slate-400 border border-navy-700">ESC</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-Panel Content Architecture -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-8">
+
+      <!-- Left Column: Daily Routine & Realtime Status (4 Cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <!-- Live Rundown Card -->
+        <div class="border border-navy-700 bg-navy-900/80 rounded-lg p-5">
+          <div class="flex items-center justify-between mb-4 border-b border-navy-800 pb-2">
+            <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-brass-400">Rundown Harian (Pasal 18)</h2>
+            <span class="px-2 py-0.5 text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded">Senin - Kamis</span>
+          </div>
+          
+          <div class="bg-navy-950 border border-brass-500/40 p-3.5 rounded mb-4">
+            <div class="flex items-center justify-between text-[10px] font-mono text-brass-400 uppercase">
+              <span>Kegiatan Aktif Saat Ini</span>
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            </div>
+            <div class="text-sm font-bold text-white mt-1">07.30 - 12.00 • KBM Sesi Pagi</div>
+            <div class="text-xs text-slate-400 mt-0.5">Kegiatan Belajar di Kelas • Disiplin Akademik</div>
+          </div>
+
+          <div class="space-y-2 text-xs font-mono">
+            <div class="p-2.5 bg-navy-950 rounded border border-navy-800 flex justify-between">
+              <span class="text-slate-400">04.00 - 04.20</span>
+              <span class="text-slate-200">Bangun Pagi</span>
+            </div>
+            <div class="p-2.5 bg-navy-950 rounded border border-navy-800 flex justify-between">
+              <span class="text-slate-400">04.20 - 05.15</span>
+              <span class="text-slate-200">Ibadah Pagi / Subuh</span>
+            </div>
+            <div class="p-2.5 bg-navy-950 rounded border border-navy-800 flex justify-between">
+              <span class="text-slate-400">06.30 - 07.00</span>
+              <span class="text-slate-200">Makan Pagi (Tertib)</span>
+            </div>
+            <div class="p-2.5 bg-navy-950 rounded border border-navy-800 flex justify-between">
+              <span class="text-slate-400">07.00 - 07.30</span>
+              <span class="text-slate-200">Apel Pagi</span>
+            </div>
+            <div class="p-2.5 bg-navy-950 rounded border border-navy-800 flex justify-between">
+              <span class="text-slate-400">21.00 - 21.30</span>
+              <span class="text-slate-200">Apel Malam (Pawas)</span>
+            </div>
+            <div class="p-2.5 bg-navy-850 rounded border border-brass-500/30 flex justify-between text-brass-300 font-bold">
+              <span>22.00</span>
+              <span>Lampu Padam & Istirahat</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Disciplinary Matrix Warning -->
+        <div class="border border-rose-900/60 bg-rose-950/20 rounded-lg p-5">
+          <div class="flex items-center space-x-2 text-rose-400 font-mono text-xs font-bold uppercase mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <span>Aturan Eskalasi Pelanggaran</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            Pasal 38 ayat (8): Pelanggaran ringan yang diulang <strong class="text-rose-300 font-bold">2 kali</strong> langsung naik status menjadi <strong class="text-rose-300 font-bold">Sanksi Sedang</strong>. Pengulangan <strong class="text-rose-300 font-bold">3 kali</strong> dikenakan sanksi <strong class="text-rose-300 font-bold">Pelanggaran Berat</strong> (Dewan Kehormatan / Pengeluaran).
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Core Rules & Markdown Base (8 Cols) -->
+      <div class="lg:col-span-8 space-y-6">
+        <!-- Interactive Rule Cards -->
+        <div class="border border-navy-700 bg-navy-900/80 rounded-lg p-6">
+          <div class="flex items-center justify-between border-b border-navy-800 pb-3 mb-5">
+            <div>
+              <h2 class="text-base font-bold text-white tracking-tight">Ketentuan Disiplin & Etika Kunci</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Panduan kepatuhan harian bagi seluruh Serdik di Lemdik Kesatrian</p>
+            </div>
+            <span class="text-xs font-mono text-brass-400">BAB VI & VII</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-navy-950 p-4 rounded border border-navy-800 hover:border-brass-500/40 transition">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-mono text-brass-400 font-bold">Pasal 28</span>
+                <span class="text-[10px] px-2 py-0.5 bg-navy-850 text-slate-300 rounded font-mono">Kerapihan</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-1">Cukur & Potongan Rambut</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Pria: Rambut wajib 0-1-2 cm rapi militer, kumis & jenggot wajib dicukur bersih tanpa toleransi. Wanita: Terikat rapi / jilbab kedinasan resmi.
+              </p>
+            </div>
+
+            <div class="bg-navy-950 p-4 rounded border border-navy-800 hover:border-brass-500/40 transition">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-mono text-brass-400 font-bold">Pasal 30</span>
+                <span class="text-[10px] px-2 py-0.5 bg-navy-850 text-slate-300 rounded font-mono">Makan</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-1">Tata Cara Ruang Makan</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Masuk berbaris tertib. Duduk tegak lurus, sendok & garpu tidak berdenting, dilarang bersuara saat makan, dan makanan wajib dihabiskan bersih.
+              </p>
+            </div>
+
+            <div class="bg-navy-950 p-4 rounded border border-navy-800 hover:border-brass-500/40 transition">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-mono text-brass-400 font-bold">Pasal 32 & 33</span>
+                <span class="text-[10px] px-2 py-0.5 bg-rose-950/60 text-rose-300 rounded font-mono">Gawai</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-1">Gawai, Laptop & Medsos</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                HP/gawai hanya boleh diakses saat jam belajar mandiri. Dilarang aktif saat apel/KBM/tidur. Dilarang unggah konten militer/rahasia di media sosial.
+              </p>
+            </div>
+
+            <div class="bg-navy-950 p-4 rounded border border-navy-800 hover:border-brass-500/40 transition">
+              <div class="flex justify-between items-center mb-1.5">
+                <span class="text-xs font-mono text-brass-400 font-bold">Pasal 25 & 35</span>
+                <span class="text-[10px] px-2 py-0.5 bg-navy-850 text-slate-300 rounded font-mono">Izin</span>
+              </div>
+              <h3 class="text-sm font-bold text-white mb-1">Jam Kantin & Hak Pesiar</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Kantin hanya buka Rabu & Jumat malam (dilarang bawa makanan ke barak!). Pesiar dan Izin Bermalam hanya untuk Serdik berkepribadian baik.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Markdown Source Reader Card -->
+        <div class="border border-navy-700 bg-navy-900/80 rounded-lg p-6">
+          <div class="flex items-center justify-between border-b border-navy-800 pb-3 mb-4">
+            <div class="flex items-center space-x-2">
+              <span class="w-2.5 h-2.5 rounded bg-brass-400"></span>
+              <h2 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Integrasi Sumber Markdown (PERSUSDIK.md)</h2>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">Sinkron Langsung</span>
+          </div>
+          <div class="bg-navy-950 p-4 rounded font-mono text-xs text-slate-300 leading-relaxed border border-navy-800">
+            <div class="text-brass-400 font-bold"># PROGRAM PRESIDEN UNTUK PEMIMPIN MASA DEPAN</div>
+            <div class="text-brass-400/80 font-bold">## BATCH 1 / SOEDIRMAN</div>
+            <div class="text-white font-bold mt-2">### PERATURAN KHUSUS PESERTA DIDIK</div>
+            <div class="text-slate-400">**TAHUN ANGGARAN 2026**</div>
+            <div class="text-slate-400 italic mt-0.5">*Serpong, Juni 2026*</div>
+          </div>
+          <p class="text-xs text-slate-400 mt-3 leading-relaxed">
+            Aplikasi membaca langsung dokumen <code class="text-brass-400 font-mono">PERSUSDIK.md</code> sehingga setiap pembaruan berkas markdown secara otomatis tertera di portal tanpa perlu kompilasi ulang.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- PDF Modal Viewer -->
+  <div id="pdf-modal" class="fixed inset-0 z-50 bg-navy-950/80 backdrop-blur-md hidden items-center justify-center p-4 lg:p-8">
+    <div class="bg-navy-900 border border-navy-700 rounded-lg w-full max-w-6xl h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      <div class="px-6 py-4 bg-navy-850 border-b border-navy-700 flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+          <span class="w-3 h-3 rounded-full bg-brass-400"></span>
+          <span class="text-sm font-bold text-white">Pratinjau Dokumen Asli PDF (42 Halaman Resmi)</span>
+        </div>
+        <div class="flex items-center space-x-3">
+          <a href="../PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf" download class="text-xs bg-brass-500 hover:bg-brass-400 text-navy-950 font-bold px-3 py-1.5 rounded transition">
+            Unduh Berkas Asli
+          </a>
+          <button onclick="togglePdfModal(false)" class="text-slate-400 hover:text-white p-1 text-sm font-mono">
+            ✕ TUTUP
+          </button>
+        </div>
+      </div>
+      <div class="flex-1 bg-navy-950 p-2">
+        <iframe src="../PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf" class="w-full h-full rounded border border-navy-800" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-navy-800 mt-12 py-6 text-center text-xs font-mono text-slate-500">
+    Program Presiden untuk Pemimpin Masa Depan (P3MD) • Batch 1 / Soedirman • Lemdik Kesatrian Serpong
+  </footer>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const el = document.getElementById('live-clock');
+      if (el) el.textContent = `${h}:${m}:${s} WIB`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    function togglePdfModal(show) {
+      const modal = document.getElementById('pdf-modal');
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      } else {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+  </script>
+</body>
+</html>

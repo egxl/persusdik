@@ -1,0 +1,11 @@
+@import "./styles/typography.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #FAF8F5;
+  color: #0F172A;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}

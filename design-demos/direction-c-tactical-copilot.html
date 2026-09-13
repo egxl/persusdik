@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arah C: Tactical Copilot — PERSUSDIK P3MD Batch 1 Soedirman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            slatex: {
+              950: '#07090E',
+              900: '#0B0F19',
+              850: '#111726',
+              800: '#1A2236',
+              700: '#25324D',
+            },
+            tactical: {
+              green: '#22C55E',
+              amber: '#F59E0B',
+              rose: '#F43F5E',
+              olive: '#3E503F',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #07090E; color: #E2E8F0; }
+  </style>
+</head>
+<body class="h-screen flex flex-col font-sans overflow-hidden antialiased selection:bg-tactical-amber selection:text-slatex-950">
+
+  <!-- Huashu Top Ribbon -->
+  <div class="bg-tactical-amber/10 border-b border-tactical-amber/30 text-tactical-amber text-xs px-4 py-1.5 flex items-center justify-between font-mono shrink-0">
+    <div class="flex items-center space-x-2">
+      <span class="inline-block w-2 h-2 rounded bg-tactical-amber"></span>
+      <span class="font-bold uppercase tracking-wider">Arah C · Tactical Copilot</span>
+      <span class="text-slate-400 hidden sm:inline">| High-Density Split-Pane Command Deck</span>
+    </div>
+    <div class="flex items-center space-x-4">
+      <span class="text-slate-400 text-[11px] hidden md:inline">Layout: Dual HUD Cockpit (Live Tools + Document Stream)</span>
+      <a href="index.html" class="text-tactical-amber hover:text-white underline font-semibold">
+        ← Bandingkan 3 Arah
+      </a>
+    </div>
+  </div>
+
+  <!-- Primary Cockpit Nav -->
+  <header class="h-14 bg-slatex-900 border-b border-slatex-800 px-4 flex items-center justify-between shrink-0 font-mono text-xs">
+    <div class="flex items-center space-x-3">
+      <div class="px-2 py-1 bg-tactical-olive rounded text-emerald-300 font-bold">SOEDIRMAN-01</div>
+      <div class="font-bold text-white tracking-wide">P3MD PERSUSDIK COPILOT</div>
+      <span class="text-slate-500 hidden sm:inline">| TA 2026 SERPONG</span>
+    </div>
+
+    <div class="flex items-center space-x-3">
+      <div class="flex items-center space-x-2 bg-slatex-850 px-2.5 py-1 rounded border border-slatex-800 text-slate-300">
+        <span class="text-slate-500">JAM:</span>
+        <span class="text-emerald-400 font-bold">09:45:00 WIB</span>
+      </div>
+      <a href="../PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf" download class="bg-slatex-800 hover:bg-slatex-700 text-slate-200 border border-slatex-700 px-3 py-1 rounded flex items-center space-x-1.5 transition">
+        <span>Unduh PDF</span>
+      </a>
+      <button onclick="toggleSplitMode()" id="split-btn" class="bg-tactical-amber hover:bg-amber-400 text-slatex-950 font-bold px-3 py-1 rounded transition">
+        Mode Split PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- Cockpit Body: Split Screen -->
+  <div class="flex-1 flex overflow-hidden">
+
+    <!-- Left HUD Rail: Realtime Tools, Schedule, Escalation Calculator (380px) -->
+    <aside class="w-96 border-r border-slatex-800 bg-slatex-900/60 flex flex-col shrink-0 overflow-y-auto p-4 space-y-4">
+      
+      <!-- Quick Status -->
+      <div class="bg-slatex-850 border border-slatex-800 p-3.5 rounded text-xs">
+        <div class="flex items-center justify-between font-mono text-[10px] text-slate-400 mb-1">
+          <span>STATUS SERDIK</span>
+          <span class="text-emerald-400 font-bold">TERKENDALI</span>
+        </div>
+        <div class="font-bold text-white text-sm">Fase: Core Character Self-Mastery</div>
+        <div class="text-[11px] text-slate-400 mt-0.5">Komandan: Marsma TNI Dr. Anton Pallaguna</div>
+      </div>
+
+      <!-- Interactive Escalation Simulator -->
+      <div class="bg-slatex-850 border border-slatex-800 p-3.5 rounded">
+        <div class="flex items-center justify-between font-mono text-[10px] text-tactical-amber font-bold mb-2">
+          <span>SIMULATOR ESKALASI SANKSI</span>
+          <span>PASAL 38</span>
+        </div>
+        <div class="text-xs text-slate-300 mb-3">
+          Simulasikan konsekuensi jika seorang serdik mengulang pelanggaran ringan:
+        </div>
+        
+        <!-- Recurrence selector -->
+        <div class="grid grid-cols-3 gap-1.5 font-mono text-xs mb-3">
+          <button onclick="setEscalation(1)" id="esc-1" class="py-1.5 rounded text-center border font-bold bg-slatex-800 border-slatex-700 text-slate-300">1x Terjadi</button>
+          <button onclick="setEscalation(2)" id="esc-2" class="py-1.5 rounded text-center border font-bold bg-amber-500/20 border-amber-500 text-amber-300">2x Terjadi</button>
+          <button onclick="setEscalation(3)" id="esc-3" class="py-1.5 rounded text-center border font-bold bg-slatex-800 border-slatex-700 text-slate-300">3x Terjadi</button>
+        </div>
+
+        <div id="esc-result" class="p-2.5 rounded bg-slatex-950 border border-amber-500/40 text-xs font-mono">
+          <div class="text-amber-400 font-bold uppercase text-[11px]">Eskalasi: Sanksi Sedang!</div>
+          <div class="text-slate-300 text-[11px] mt-1">Pencabutan hak pesiar akhir pekan + tugas piket jaga ekstra serambi barak.</div>
+        </div>
+      </div>
+
+      <!-- Schedule Ticker -->
+      <div class="bg-slatex-850 border border-slatex-800 p-3.5 rounded text-xs">
+        <div class="font-mono text-[10px] text-slate-400 uppercase font-bold mb-2 flex justify-between">
+          <span>TIMELINE HARIAN (PASAL 18)</span>
+          <span class="text-emerald-400">SENIN-KAMIS</span>
+        </div>
+        <div class="space-y-1.5 font-mono text-[11px]">
+          <div class="p-2 bg-slatex-900 rounded border border-slatex-800 flex justify-between">
+            <span class="text-slate-400">04.00</span>
+            <span class="text-slate-200">Bangun Pagi & Persiapan</span>
+          </div>
+          <div class="p-2 bg-slatex-900 rounded border border-slatex-800 flex justify-between">
+            <span class="text-slate-400">07.00</span>
+            <span class="text-slate-200">Apel Pagi</span>
+          </div>
+          <div class="p-2 bg-emerald-950/40 border border-emerald-500/40 rounded flex justify-between text-emerald-300 font-bold">
+            <span>07.30 - 12.00</span>
+            <span>KBM Kelas Pagi (Aktif)</span>
+          </div>
+          <div class="p-2 bg-slatex-900 rounded border border-slatex-800 flex justify-between">
+            <span class="text-slate-400">12.00</span>
+            <span class="text-slate-200">Ishoma Siang</span>
+          </div>
+          <div class="p-2 bg-slatex-900 rounded border border-slatex-800 flex justify-between">
+            <span class="text-slate-400">22.00</span>
+            <span class="text-tactical-amber">Lampu Padam / Istirahat</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Role Lookup -->
+      <div class="bg-slatex-850 border border-slatex-800 p-3.5 rounded text-xs">
+        <div class="font-mono text-[10px] text-slate-400 uppercase font-bold mb-2">44 JABATAN KORPS (PASAL 12)</div>
+        <div class="text-[11px] text-slate-300 space-y-1 font-mono">
+          <div>• Dan Batch Korps & Wadan Batch</div>
+          <div>• Lemusdik (Musyawarah Serdik)</div>
+          <div>• Polisi Serdik (Penegak Disiplin)</div>
+          <div>• 10 Seksi Nilai Karakter Soedirman</div>
+          <div>• Dan Grup & Dan Elemen</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Pane: Document Stream (Markdown + Optional Split PDF) -->
+    <main class="flex-1 flex overflow-hidden bg-slatex-950">
+      
+      <!-- Markdown Document Pane -->
+      <div id="markdown-pane" class="flex-1 overflow-y-auto p-6 lg:p-8 space-y-6">
+        <div class="border-b border-slatex-800 pb-4">
+          <div class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider mb-1">Teks Master Terdaftar</div>
+          <h1 class="text-xl font-bold text-white">PERSUSDIK.md</h1>
+          <p class="text-xs text-slate-400 mt-0.5">Program Presiden untuk Pemimpin Masa Depan • Batch 1 Soedirman</p>
+        </div>
+
+        <div class="bg-slatex-900 border border-slatex-800 rounded p-4 font-mono text-xs leading-relaxed text-slate-300">
+          <div class="text-tactical-amber font-bold"># PROGRAM PRESIDEN UNTUK PEMIMPIN MASA DEPAN</div>
+          <div class="text-amber-400 font-bold">## BATCH 1 / SOEDIRMAN</div>
+          <div class="text-white font-bold mt-2">### PERATURAN KHUSUS PESERTA DIDIK</div>
+          <div class="text-slate-400">**TAHUN ANGGARAN 2026**</div>
+          <div class="text-slate-400 italic mt-0.5">*Serpong, Juni 2026*</div>
+        </div>
+
+        <!-- Quick Rule Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-3.5 bg-slatex-900 border border-slatex-800 rounded">
+            <span class="font-mono text-tactical-amber font-bold">PASAL 28</span>
+            <div class="text-sm font-bold text-white mt-1">Standar Cukur 0-1-2 cm</div>
+            <div class="text-slate-400 mt-1">Pria wajib cukur licin kumis dan jenggot setiap hari sebelum apel pagi.</div>
+          </div>
+          <div class="p-3.5 bg-slatex-900 border border-slatex-800 rounded">
+            <span class="font-mono text-tactical-amber font-bold">PASAL 30</span>
+            <div class="text-sm font-bold text-white mt-1">Ruang Makan Senyap</div>
+            <div class="text-slate-400 mt-1">Duduk tegak, sendok/garpu tidak boleh beradu suara, makanan harus habis.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Split PDF Pane (Hidden by default, toggled via Split Mode) -->
+      <div id="pdf-split-pane" class="w-1/2 border-l border-slatex-800 bg-slatex-900 hidden flex-col">
+        <div class="px-4 py-2 border-b border-slatex-800 flex items-center justify-between text-xs font-mono bg-slatex-850">
+          <span class="text-slate-300 font-bold">Naskah Asli PDF (42 Halaman)</span>
+          <button onclick="toggleSplitMode()" class="text-slate-400 hover:text-white">✕ TUTUP SPLIT</button>
+        </div>
+        <div class="flex-1 p-1">
+          <iframe src="../PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf" class="w-full h-full" frameborder="0"></iframe>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    let splitActive = false;
+    function toggleSplitMode() {
+      splitActive = !splitActive;
+      const pane = document.getElementById('pdf-split-pane');
+      const btn = document.getElementById('split-btn');
+      if (splitActive) {
+        pane.classList.remove('hidden');
+        pane.classList.add('flex');
+        btn.textContent = 'Tutup Split';
+      } else {
+        pane.classList.add('hidden');
+        pane.classList.remove('flex');
+        btn.textContent = 'Mode Split PDF';
+      }
+    }
+
+    function setEscalation(level) {
+      const b1 = document.getElementById('esc-1');
+      const b2 = document.getElementById('esc-2');
+      const b3 = document.getElementById('esc-3');
+      const res = document.getElementById('esc-result');
+
+      [b1, b2, b3].forEach(b => {
+        b.className = 'py-1.5 rounded text-center border font-bold bg-slatex-800 border-slatex-700 text-slate-300';
+      });
+
+      if (level === 1) {
+        b1.className = 'py-1.5 rounded text-center border font-bold bg-emerald-500/20 border-emerald-500 text-emerald-300';
+        res.innerHTML = '<div class="text-emerald-400 font-bold uppercase text-[11px]">Eskalasi: Sanksi Ringan</div><div class="text-slate-300 text-[11px] mt-1">Teguran lisan/tertulis + tindakan pembinaan fisik terukur terpantau medis.</div>';
+      } else if (level === 2) {
+        b2.className = 'py-1.5 rounded text-center border font-bold bg-amber-500/20 border-amber-500 text-amber-300';
+        res.innerHTML = '<div class="text-amber-400 font-bold uppercase text-[11px]">Eskalasi: Sanksi Sedang (Naik Status)</div><div class="text-slate-300 text-[11px] mt-1">Pencabutan hak pesiar akhir pekan + piket jaga ekstra serambi barak.</div>';
+      } else {
+        b3.className = 'py-1.5 rounded text-center border font-bold bg-rose-500/20 border-rose-500 text-rose-300';
+        res.innerHTML = '<div class="text-rose-400 font-bold uppercase text-[11px]">Eskalasi: Sanksi Berat (Maksimal)</div><div class="text-slate-300 text-[11px] mt-1">Sidang Dewan Kehormatan Serdik, laporan ke instansi asal, hingga PENGELUARAN (DROP OUT).</div>';
+      }
+    }
+  </script>
+</body>
+</html>
