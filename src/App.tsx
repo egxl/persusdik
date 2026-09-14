@@ -15,7 +15,14 @@ import { SearchDialog } from "./components/SearchDialog";
 import { Columns, BookOpen, Download } from "lucide-react";
 
 export function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>("home");
+  const [currentPage, setCurrentPage] = useState<PageId>(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hash = window.location.hash.replace("#", "") as PageId;
+      const validPages: PageId[] = ["home", "naskah", "faq", "jadwal", "disiplin", "organisasi", "kuis"];
+      if (validPages.includes(hash)) return hash;
+    }
+    return "home";
+  });
   const [isPdfModalOpen, setIsPdfModalOpen] = useState<boolean>(false);
   const [isSplitView, setIsSplitView] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
@@ -42,7 +49,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-command-700 selection:text-white">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-command-700 selection:text-white overflow-x-hidden">
       {/* Institutional Top Navbar */}
       <Navbar
         currentPage={currentPage}

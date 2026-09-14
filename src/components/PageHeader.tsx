@@ -24,24 +24,25 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         
         {/* Breadcrumb Navigation */}
         <div className="flex items-center justify-between gap-4 mb-4 text-xs sm:text-sm">
-          <nav className="flex items-center space-x-2 text-slate-500 font-sans" aria-label="Breadcrumb">
+          <nav className="flex items-center space-x-2 text-slate-500 font-sans min-w-0" aria-label="Breadcrumb">
             <button
               onClick={() => onNavigate("home")}
-              className="hover:text-command-700 transition flex items-center space-x-1.5 cursor-pointer font-medium"
+              className="hover:text-command-700 transition flex items-center space-x-1.5 cursor-pointer font-medium shrink-0"
             >
-              <Home className="w-3.5 h-3.5 text-slate-400" />
-              <span>Beranda</span>
+              <Home className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+              <span className="hidden sm:inline">Beranda</span>
             </button>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-            <span className="text-slate-900 font-semibold">{title}</span>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-300 shrink-0" />
+            <span className="text-slate-900 font-semibold truncate">{title}</span>
           </nav>
 
           <button
             onClick={() => onNavigate("home")}
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-600 hover:text-command-700 cursor-pointer group transition"
+            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-600 hover:text-command-700 cursor-pointer group transition shrink-0 whitespace-nowrap"
           >
-            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-            <span>Kembali ke Beranda</span>
+            <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform shrink-0" />
+            <span className="hidden sm:inline">Kembali ke Beranda</span>
+            <span className="sm:hidden">Beranda</span>
           </button>
         </div>
 
