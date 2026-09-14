@@ -49,7 +49,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-command-700 selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#F6F7F9] text-slate-900 flex flex-col font-sans selection:bg-navy-950 selection:text-brass-400 overflow-x-hidden">
       {/* Institutional Top Navbar */}
       <Navbar
         currentPage={currentPage}
@@ -77,31 +77,31 @@ export function App() {
               currentPage="naskah"
               onNavigate={handleNavigate}
               actions={
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 font-mono text-xs font-bold uppercase">
                   <button
                     onClick={() => setIsSplitView((prev) => !prev)}
-                    className={`hidden lg:inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold border transition cursor-pointer ${
+                    className={`hidden lg:inline-flex items-center space-x-1.5 px-3 py-2 rounded-xs border transition cursor-pointer ${
                       isSplitView
-                        ? "bg-navy-900 text-white border-navy-950 shadow-xs"
-                        : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+                        ? "bg-navy-950 text-brass-400 border-navy-950 shadow-xs"
+                        : "border-canvas-300 bg-white text-slate-700 hover:bg-canvas-100"
                     }`}
                   >
-                    <Columns className="w-3.5 h-3.5" />
+                    <Columns className="w-3.5 h-3.5 text-brass-600" />
                     <span>{isSplitView ? "Tutup Split PDF" : "Mode Split PDF"}</span>
                   </button>
 
                   <button
                     onClick={() => setIsPdfModalOpen(true)}
-                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 transition cursor-pointer"
+                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xs border border-brass-600/40 bg-brass-50/50 hover:bg-brass-100/60 text-navy-950 transition cursor-pointer"
                   >
-                    <BookOpen className="w-3.5 h-3.5 text-command-600" />
+                    <BookOpen className="w-3.5 h-3.5 text-brass-700" />
                     <span>Naskah Asli PDF</span>
                   </button>
 
                   <a
                     href="./PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf"
                     download
-                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 hover:bg-command-800 text-white transition shadow-2xs cursor-pointer"
+                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xs bg-navy-950 hover:bg-navy-900 text-white transition shadow-2xs cursor-pointer"
                   >
                     <Download className="w-3.5 h-3.5 text-brass-400" />
                     <span>Unduh PDF</span>
@@ -116,10 +116,10 @@ export function App() {
                   <div className="lg:col-span-6 overflow-y-auto pr-2 space-y-6">
                     <MarkdownDocument onOpenPdf={() => setIsPdfModalOpen(true)} />
                   </div>
-                  <div className="hidden lg:flex lg:col-span-6 border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm flex-col">
-                    <div className="px-4 py-2.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between text-xs font-bold text-slate-800">
+                  <div className="hidden lg:flex lg:col-span-6 border border-canvas-300 rounded-xs overflow-hidden bg-white shadow-sm flex-col">
+                    <div className="px-4 py-2.5 bg-canvas-100 border-b border-canvas-300 flex items-center justify-between text-xs font-mono font-bold text-navy-950">
                       <span>Naskah Asli PDF (42 Halaman)</span>
-                      <span className="text-[10px] text-slate-500 font-mono">TA 2026 SERPONG</span>
+                      <span className="text-[10px] text-brass-700 font-mono">TA 2026 SERPONG</span>
                     </div>
                     <iframe
                       src="./PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf"
