@@ -1,49 +1,56 @@
-/* Custom parchment scrollbar */
+/* Modern Precision Scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4EFE6;
+  background: #F1F5F9;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D5C5A5;
-  border-radius: 4px;
+  background: #CBD5E1;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8C6D2B;
+  background: #94A3B8;
 }
 
-/* Classical Archival Drop-Caps */
-.drop-cap:first-letter {
-  float: left;
-  font-family: "Cinzel", serif;
-  font-size: 3.25rem;
-  line-height: 0.8;
-  padding-top: 4px;
-  padding-right: 8px;
-  padding-bottom: 2px;
-  color: #8C6D2B;
-  font-weight: 700;
-}
-
-/* Gold hairlines */
-.gold-divider {
-  height: 1px;
-  background: linear-gradient(to right, transparent, #8C6D2B, transparent);
-}
-
-.heritage-card {
+/* Presidential Command Cards & Surfaces */
+.command-card {
   background-color: #FFFFFF;
-  border: 1px solid #D5C5A5;
-  box-shadow: 0 4px 20px -2px rgba(140, 109, 43, 0.08);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
 }
 
-/* Text Selection Theme */
-::selection {
-  background-color: #C5A059;
+.command-card-elevated {
+  background-color: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 10px 25px -5px rgba(11, 19, 43, 0.06), 0 8px 10px -6px rgba(11, 19, 43, 0.04);
+}
+
+/* Hairline Grid Accents */
+.command-grid-border {
+  border-color: #E2E8F0;
+}
+
+/* Legal text readability & article typography */
+.prose-legal {
+  max-width: 76ch;
+  line-height: 1.75;
+  color: #1E293B;
+}
+
+.prose-decree {
+  line-height: 1.8;
   color: #0F172A;
 }
+
+/* Selection */
+::selection {
+  background-color: #1E40AF;
+  color: #FFFFFF;
+}
+
+

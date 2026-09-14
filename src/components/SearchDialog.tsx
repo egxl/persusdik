@@ -89,44 +89,46 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
     matchedFaqs.length + matchedPasals.length + matchedViolations.length;
 
   return (
-    <div className="fixed inset-0 z-50 bg-ink-950/70 backdrop-blur-sm flex items-start justify-center p-4 pt-20 animate-fadeIn">
-      <div className="bg-white border border-parchment-300 rounded-xl w-full max-w-2xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
-        <div className="p-4 border-b border-parchment-200 flex items-center space-x-3 bg-parchment-50">
-          <Search className="w-5 h-5 text-bronze-700 shrink-0" />
+    <div className="fixed inset-0 z-50 bg-navy-950/70 backdrop-blur-sm flex items-start justify-center p-4 pt-16 sm:pt-20 animate-fadeIn">
+      <div className="bg-white border border-slate-200 rounded-2xl w-full max-w-2xl shadow-2xl overflow-hidden flex flex-col max-h-[82vh]">
+        <div className="p-4 border-b border-slate-100 flex items-center space-x-3 bg-slate-50/80">
+          <Search className="w-5 h-5 text-command-600 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Ketik kata kunci pencarian (misal: 'cukur', 'kantin', 'gawai', 'pesiar', 'bullying')..."
-            className="flex-1 bg-transparent text-ink-900 placeholder-ink-600 text-sm focus:outline-none font-sans"
+            placeholder="Ketik kata kunci pencarian (misal: 'cukur', 'kantin', 'gawai', 'pesiar', 'hazing')..."
+            className="flex-1 bg-transparent text-navy-950 placeholder-slate-400 text-sm sm:text-base focus:outline-none font-sans"
           />
           {query && (
             <button
               onClick={() => setQuery("")}
-              className="text-ink-600 hover:text-ink-900 p-1"
+              className="text-slate-400 hover:text-slate-700 p-1 cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
           )}
-          <kbd className="text-[10px] font-mono bg-white border border-parchment-300 px-2 py-0.5 rounded text-ink-600">
+          <kbd className="text-[10px] sm:text-xs font-mono bg-white border border-slate-200 px-2 py-0.5 rounded-md text-slate-500 font-semibold shadow-2xs">
             ESC
           </kbd>
         </div>
 
-        <div className="overflow-y-auto p-4 space-y-5 divide-y divide-parchment-200">
+        <div className="overflow-y-auto p-4 sm:p-5 space-y-5 divide-y divide-slate-100">
           {!q ? (
-            <div className="py-8 text-center text-xs text-ink-600 font-sans space-y-2">
-              <div className="font-cinzel text-bronze-800 font-bold text-sm">
+            <div className="py-8 text-center text-sm text-slate-600 font-sans space-y-3">
+              <div className="text-base font-extrabold text-navy-950">
                 Pencarian Kilat Regulasi Perkhusserdik
               </div>
-              <p>Mulai ketik untuk menelusuri seluruh pasal, tanya-jawab (FAQ), dan aturan sanksi.</p>
-              <div className="pt-2 flex justify-center gap-1.5 flex-wrap">
-                {["rambut", "rokok", "gawai", "pesiar", "makan", "kantin"].map((kw) => (
+              <p className="max-w-md mx-auto text-xs sm:text-sm text-slate-500">
+                Telusuri seluruh 42 pasal, panduan tanya-jawab (FAQ), dan matriks sanksi disiplin dengan cepat.
+              </p>
+              <div className="pt-1 flex justify-center gap-2 flex-wrap">
+                {["rambut", "rokok", "gawai", "pesiar", "makan", "kantin", "hazing"].map((kw) => (
                   <button
                     key={kw}
                     onClick={() => setQuery(kw)}
-                    className="px-2 py-1 bg-parchment-100 hover:bg-parchment-200 border border-parchment-300 rounded text-[11px] text-ink-800"
+                    className="px-2.5 py-1 bg-slate-100 hover:bg-command-50 hover:text-command-700 hover:border-command-200 border border-slate-200 rounded-lg text-xs font-medium text-slate-700 transition cursor-pointer"
                   >
                     #{kw}
                   </button>
@@ -134,18 +136,18 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
               </div>
             </div>
           ) : totalResults === 0 ? (
-            <div className="py-8 text-center text-xs text-ink-700 font-sans">
-              Tidak ada hasil yang cocok dengan kata kunci "{query}". Coba sinonim atau istilah resmi.
+            <div className="py-8 text-center text-sm text-slate-500 font-sans">
+              Tidak ada hasil yang cocok dengan kata kunci &ldquo;{query}&rdquo;. Coba gunakan istilah umum lainnya.
             </div>
           ) : (
             <>
               {matchedFaqs.length > 0 && (
                 <div className="space-y-2 pt-2 first:pt-0">
-                  <div className="flex items-center space-x-1.5 text-[11px] font-cinzel font-bold text-bronze-800 uppercase tracking-wider">
-                    <HelpCircle className="w-3.5 h-3.5" />
+                  <div className="flex items-center space-x-2 text-xs font-bold text-command-700 uppercase tracking-wider">
+                    <HelpCircle className="w-4 h-4" />
                     <span>Tanya Jawab (FAQ)</span>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {matchedFaqs.map((f) => (
                       <button
                         key={f.id}
@@ -153,11 +155,17 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
                           onNavigateTab("faq");
                           onClose();
                         }}
-                        className="w-full text-left p-3 rounded-lg bg-parchment-50 hover:bg-parchment-100 border border-parchment-200 transition space-y-1"
+                        className="w-full text-left p-3.5 rounded-xl bg-slate-50 hover:bg-command-50/50 border border-slate-200 hover:border-command-200 transition space-y-1.5 cursor-pointer group"
                       >
-                        <div className="font-bold text-xs text-ink-900">{f.question}</div>
-                        <p className="text-[11px] text-ink-700 line-clamp-1">{f.answer}</p>
-                        <div className="text-[10px] text-bronze-700 font-serif italic">{f.pasalCitation}</div>
+                        <div className="font-bold text-sm sm:text-base text-navy-950 group-hover:text-command-900 leading-snug">
+                          {f.question}
+                        </div>
+                        <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                          {f.answer}
+                        </p>
+                        <div className="text-xs text-command-700 font-mono font-semibold">
+                          {f.pasalCitation}
+                        </div>
                       </button>
                     ))}
                   </div>
@@ -165,12 +173,12 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
               )}
 
               {matchedPasals.length > 0 && (
-                <div className="space-y-2 pt-3">
-                  <div className="flex items-center space-x-1.5 text-[11px] font-cinzel font-bold text-bronze-800 uppercase tracking-wider">
-                    <BookOpen className="w-3.5 h-3.5" />
-                    <span>Pasal & Bab Resmi</span>
+                <div className="space-y-2 pt-4">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-amber-700 uppercase tracking-wider">
+                    <BookOpen className="w-4 h-4" />
+                    <span>Pasal &amp; Bab Resmi</span>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {matchedPasals.map((p, idx) => (
                       <button
                         key={idx}
@@ -178,15 +186,19 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
                           onNavigateTab("naskah");
                           onClose();
                         }}
-                        className="w-full text-left p-3 rounded-lg bg-parchment-50 hover:bg-parchment-100 border border-parchment-200 transition space-y-1"
+                        className="w-full text-left p-3.5 rounded-xl bg-slate-50 hover:bg-amber-50/50 border border-slate-200 hover:border-amber-200 transition space-y-1.5 cursor-pointer group"
                       >
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="font-bold text-ink-900 font-cinzel">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="font-bold text-sm sm:text-base text-navy-950 group-hover:text-amber-950">
                             {p.pasalNum}: {p.title}
                           </span>
-                          <span className="text-[10px] font-mono text-bronze-700">{p.chapterNum}</span>
+                          <span className="text-[11px] font-mono text-amber-800 font-bold bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                            {p.chapterNum}
+                          </span>
                         </div>
-                        <p className="text-[11px] text-ink-700 line-clamp-1">{p.summary}</p>
+                        <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                          {p.summary}
+                        </p>
                       </button>
                     ))}
                   </div>
@@ -194,12 +206,12 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
               )}
 
               {matchedViolations.length > 0 && (
-                <div className="space-y-2 pt-3">
-                  <div className="flex items-center space-x-1.5 text-[11px] font-cinzel font-bold text-rose-800 uppercase tracking-wider">
-                    <AlertTriangle className="w-3.5 h-3.5" />
-                    <span>Matriks Disiplin & Pelanggaran</span>
+                <div className="space-y-2 pt-4">
+                  <div className="flex items-center space-x-2 text-xs font-bold text-crimson-700 uppercase tracking-wider">
+                    <AlertTriangle className="w-4 h-4" />
+                    <span>Matriks Disiplin &amp; Pelanggaran</span>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-2">
                     {matchedViolations.map((v) => (
                       <button
                         key={v.id}
@@ -207,15 +219,19 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
                           onNavigateTab("disiplin");
                           onClose();
                         }}
-                        className="w-full text-left p-3 rounded-lg bg-parchment-50 hover:bg-parchment-100 border border-parchment-200 transition space-y-1"
+                        className="w-full text-left p-3.5 rounded-xl bg-slate-50 hover:bg-rose-50/50 border border-slate-200 hover:border-rose-200 transition space-y-1.5 cursor-pointer group"
                       >
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="font-bold text-ink-900">{v.title}</span>
-                          <span className="text-[10px] font-mono uppercase font-bold text-rose-700">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="font-bold text-sm sm:text-base text-navy-950 group-hover:text-crimson-900">
+                            {v.title}
+                          </span>
+                          <span className="text-[10px] font-mono uppercase font-bold text-crimson-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
                             {v.category}
                           </span>
                         </div>
-                        <p className="text-[11px] text-ink-700 line-clamp-1">{v.description}</p>
+                        <p className="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed">
+                          {v.description}
+                        </p>
                       </button>
                     ))}
                   </div>
@@ -225,8 +241,8 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({
           )}
         </div>
 
-        <div className="p-3 bg-parchment-100 border-t border-parchment-200 text-center text-[11px] text-ink-600 font-sans">
-          Tekan tombol ESC atau klik di luar untuk menutup pencarian.
+        <div className="p-3 bg-slate-50 border-t border-slate-100 text-center text-xs text-slate-500 font-sans">
+          Gunakan tombol <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded text-[11px] font-mono">ESC</kbd> untuk menutup jendela pencarian.
         </div>
       </div>
     </div>

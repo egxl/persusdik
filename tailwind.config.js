@@ -7,34 +7,53 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        cinzel: ['"Cinzel"', 'serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'sans-serif'],
+        display: ['"Plus Jakarta Sans"', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
-        parchment: {
-          50: '#FAF8F5',
-          100: '#F4EFE6',
-          200: '#E8DEC9',
-          300: '#D5C5A5',
+        navy: {
+          950: '#070C18',
+          900: '#0B132B',
+          850: '#111C38',
+          800: '#1C2541',
+          700: '#2E3D60',
+          600: '#3A4D78',
         },
-        ink: {
-          950: '#060B14',
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
-          600: '#475569',
+        command: {
+          50: '#EFF6FF',
+          100: '#DBEAFE',
+          200: '#BFDBFE',
+          500: '#3B82F6',
+          600: '#2563EB',
+          700: '#1D4ED8',
+          800: '#1E40AF',
+          900: '#1E3A8A',
+          950: '#172554',
         },
-        bronze: {
-          400: '#D4AF37',
-          500: '#C5A059',
-          600: '#8C6D2B',
-          700: '#73571E',
-          800: '#5C4417',
+        brass: {
+          50: '#FFFBEB',
+          100: '#FEF3C7',
+          200: '#FDE68A',
+          400: '#FBBF24',
+          500: '#F59E0B',
+          600: '#D97706',
+          700: '#B45309',
+          800: '#92400E',
+        },
+        crimson: {
+          50: '#FEF2F2',
+          100: '#FEE2E2',
+          500: '#EF4444',
+          600: '#DC2626',
+          700: '#B91C1C',
+          800: '#991B1B',
+          900: '#7F1D1D',
         }
       }
     },
   },
   plugins: [],
 }
+

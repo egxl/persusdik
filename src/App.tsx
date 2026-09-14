@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PageId } from "./types/navigation";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -42,7 +42,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#0F172A] flex flex-col font-sans selection:bg-[#C5A059] selection:text-[#0F172A]">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans selection:bg-command-700 selection:text-white">
       {/* Institutional Top Navbar */}
       <Navbar
         currentPage={currentPage}
@@ -75,8 +75,8 @@ export function App() {
                     onClick={() => setIsSplitView((prev) => !prev)}
                     className={`hidden lg:inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold border transition cursor-pointer ${
                       isSplitView
-                        ? "bg-bronze-600 text-white border-bronze-700 shadow-sm"
-                        : "border-parchment-300 bg-white text-ink-800 hover:bg-parchment-100"
+                        ? "bg-navy-900 text-white border-navy-950 shadow-xs"
+                        : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
                     }`}
                   >
                     <Columns className="w-3.5 h-3.5" />
@@ -85,18 +85,18 @@ export function App() {
 
                   <button
                     onClick={() => setIsPdfModalOpen(true)}
-                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-bronze-600/40 bg-parchment-100 text-ink-900 hover:bg-bronze-600 hover:text-white transition cursor-pointer"
+                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 transition cursor-pointer"
                   >
-                    <BookOpen className="w-3.5 h-3.5 text-bronze-700" />
+                    <BookOpen className="w-3.5 h-3.5 text-command-600" />
                     <span>Naskah Asli PDF</span>
                   </button>
 
                   <a
                     href="./PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf"
                     download
-                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-bronze-600 hover:bg-bronze-700 text-white transition shadow-2xs cursor-pointer"
+                    className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-navy-900 hover:bg-command-800 text-white transition shadow-2xs cursor-pointer"
                   >
-                    <Download className="w-3.5 h-3.5" />
+                    <Download className="w-3.5 h-3.5 text-brass-400" />
                     <span>Unduh PDF</span>
                   </a>
                 </div>
@@ -109,10 +109,10 @@ export function App() {
                   <div className="lg:col-span-6 overflow-y-auto pr-2 space-y-6">
                     <MarkdownDocument onOpenPdf={() => setIsPdfModalOpen(true)} />
                   </div>
-                  <div className="hidden lg:flex lg:col-span-6 border border-parchment-300 rounded-2xl overflow-hidden bg-white shadow-sm flex-col">
-                    <div className="px-4 py-2.5 bg-parchment-100 border-b border-parchment-200 flex items-center justify-between text-xs font-cinzel font-bold text-ink-900">
+                  <div className="hidden lg:flex lg:col-span-6 border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm flex-col">
+                    <div className="px-4 py-2.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between text-xs font-bold text-slate-800">
                       <span>Naskah Asli PDF (42 Halaman)</span>
-                      <span className="text-[10px] text-bronze-800 font-mono">TA 2026 SERPONG</span>
+                      <span className="text-[10px] text-slate-500 font-mono">TA 2026 SERPONG</span>
                     </div>
                     <iframe
                       src="./PERATURAN%20KHUSUS%20SERDIK%20P3MD%20BATCH%201%202026.pdf"
@@ -130,6 +130,7 @@ export function App() {
             </div>
           </div>
         )}
+
 
         {currentPage === "jadwal" && (
           <div>
